@@ -4078,8 +4078,8 @@ local function buildUI()
         function() CFG.veil.spearGravity = cycle({ 0, 10, 20, 40, 80 }, CFG.veil.spearGravity) end, 0.33)
     mkBtn(rV3, function()
         local remain = (Veil and Veil.cdEndsAt or 0) - os.clock()
-        return remain > 0 and string.format("CD:%.1f", remain) or "CD:ok"
-    end, true end, function()
+        return (remain > 0 and string.format("CD:%.1f", remain) or "CD:ok"), true
+    end, function()
         if Veil then Veil.cdEndsAt = 0 end
     end, 0.33)
 
